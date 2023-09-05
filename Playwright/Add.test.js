@@ -15,7 +15,7 @@ test("Неуспешная авторизация", async ({ page }) => {
     await page.click('[placeholder="Пароль"]');
     await page.fill('[placeholder="Пароль"]', '234423trgfgh652335');
     await page.click('[data-testid="login-submit-btn"]');
-    await page.click('[data-testid="login-error-hint"]');
+    await expect(page.locator('[data-testid="login-error-hint"]')).toContainText("Вы ввели неправильно логин или пароль");
   });
 
   test("Успешная авторизация", async ({ page }) => {
